@@ -38,7 +38,8 @@ class Login extends CI_Controller {
                 if ($data) {
                     $this->session->set_userdata([
                         'username'  => $data['username'],
-                        'level'     => $data['level']
+                        'level'     => $data['level'],
+                        'idUser'    => $data['idUser']
                     ]);
                     switch ($data['level']) {
                         case 'admin':

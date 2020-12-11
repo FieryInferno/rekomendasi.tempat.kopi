@@ -115,6 +115,8 @@
                                     <select class="custom-select" name="pekerjaan">
                                         <option selected>Pilih Pekerjaan</option>
                                         <option value="mahasiswa">Mahasiswa</option>
+                                        <option value="kantoran">Kantoran</option>
+                                        <option value="freelance">Freelance</option>
                                     </select>
                                 </div>
                             </div>
