@@ -9,6 +9,20 @@ class Login extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        if ($this->session->level) {
+            switch ($this->session->level) {
+                case 'admin':
+                    redirect('admin');
+                    break;
+                case 'user':
+                    redirect('user');
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+        }
         $this->username = $this->input->post('username');
         $this->password = $this->input->post('pass');
     }
@@ -68,5 +82,11 @@ class Login extends CI_Controller {
     {
         $this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('pass', 'password', 'required|trim');
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('login');
     }
 }
