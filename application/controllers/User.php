@@ -33,7 +33,6 @@ class User extends CI_Controller {
 	public function index()
 	{
         $data['title']  = 'Rekomendasi Tempat Ngopi';
-        // $this->load->view('user/user', $data);
         $this->parser->parse('user/user', $data);
     }
     
@@ -42,7 +41,7 @@ class User extends CI_Controller {
         if ($this->input->post()) {
             $this->validation();
             if ($this->form_validation->run()) {
-                $this->UserModel->set('username', $this->input->post('username'));
+                $this->UserModel->set('username', $this->username);
                 $this->UserModel->set('nama', $this->nama);
                 $this->UserModel->set('password', $this->password);
                 $this->UserModel->set('jenisKelamin', $this->jenisKelamin);
@@ -72,6 +71,9 @@ class User extends CI_Controller {
                     $this->parser->parse('user/editProfile', $data);
                 }
             } else {
+                $this->UserModel->set('idUser', $this->session->idUser);
+                $data           = $this->UserModel->get();
+                $data['title']  = 'Edit Profile';
                 $this->session->set_flashdata('pesan', '
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Gagal!</strong> ' . validation_errors() . '
@@ -94,8 +96,6 @@ class User extends CI_Controller {
     {
         $this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('konfirmasiPassword', 'Konfirmasi Password', 'required|matches[password]');
 		$this->form_validation->set_rules('jenisKelamin', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required');
 		$this->form_validation->set_rules('tanggalLahir', 'Tanggal Lahir', 'required');

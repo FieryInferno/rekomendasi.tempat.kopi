@@ -19,19 +19,28 @@ class UserModel extends CI_Model {
 
     public function edit()
     {
-        $foto   = $this->upload();
-        $this->db->where('idUser', $this->session->idUser);
-        return $this->db->update('users', [
+        if (!empty($_FILES['foto']['name'])) {
+            $foto   = $this->upload();
+            $path   = 'assets/images/' . $this->input->post('gambarLama');
+            unlink($path);
+        } else {
+            $foto   = $this->input->post('gambarLama');
+        }
+        $data   = [
             'username'      => $this->username,
             'nama'          => $this->nama,
-            'password'      => password_hash($this->password, PASSWORD_DEFAULT),
             'jenisKelamin'  => $this->jenisKelamin,
             'pekerjaan'     => $this->pekerjaan,
             'tanggalLahir'  => $this->tanggalLahir,
             'email'         => $this->email,
             'level'         => 'user',
             'foto'          => $foto
-        ]);
+        ];
+        if ($this->password) {
+            $data['password']   = password_hash($this->password, PASSWORD_DEFAULT);
+        }
+        $this->db->where('idUser', $this->session->idUser);
+        return $this->db->update('users', $data);
     }
 
     public function upload()
