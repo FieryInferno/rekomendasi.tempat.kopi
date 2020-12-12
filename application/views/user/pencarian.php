@@ -23,13 +23,17 @@
                         <form action="pencarian" method="get">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="tetter" placeholder="Tempat Ngopi" type="text" name="nama" required>
+                                    <input class="tetter" placeholder="Tempat Ngopi" type="text" name="nama">
                                     <button class="submit">Cari</button>
                                 </div>
                                 <div class="col-6">
-                                    <select class="custom-select" name="fasilitas" required>
-                                        <option selected>Pilih Fasilitas</option>
-                                        <option value="wifi">Wifi</option>
+                                    <select class="custom-select" name="fasilitas">
+                                        <option value="" selected>Pilih Fasilitas</option>
+                                        <?php
+                                            foreach ($fasilitas as $key) { ?>
+                                                <option value="<?= $key['idFasilitas']; ?>"><?= $key['nama']; ?></option>
+                                            <?php }
+                                        ?>
                                     </select>
                                 </div>
                             </div>

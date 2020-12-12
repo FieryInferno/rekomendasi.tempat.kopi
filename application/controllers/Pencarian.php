@@ -28,17 +28,14 @@ class Pencarian extends CI_Controller {
             $data   = $this->PencarianModel->get();
             if ($data) {
                 $data['pencarian']  = $data;
-                $data['title']      = 'Pencarian Tempat Ngopi';
-                $this->parser->parse('user/pencarian', $data);
             } else {
                 $data['pencarian']  = null;
-                $data['title']      = 'Pencarian Tempat Ngopi';
-                $this->parser->parse('user/pencarian', $data);
             }
         } else {
             $data['pencarian']  = null;
-            $data['title']      = 'Pencarian Tempat Ngopi';
-            $this->parser->parse('user/pencarian', $data);
         }
+        $data['title']      = 'Pencarian Tempat Ngopi';
+        $data['fasilitas']  = $this->FasilitasModel->get();
+        $this->parser->parse('user/pencarian', $data);
     }
 }
