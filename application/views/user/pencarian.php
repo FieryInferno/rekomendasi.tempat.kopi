@@ -55,21 +55,22 @@
                                                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
                                                                     <div class="blog_box">
                                                                         <div class="blog_img_box">
-                                                                            <figure><img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="#"/>
-                                                                            <span>
-                                                                                <?php
-                                                                                    for ($k=0; $k < 5; $k++) {
-                                                                                        if ($key['rating'] > $k) { ?>
-                                                                                            <i class="fa fa-star checked"></i>
-                                                                                        <?php } else { ?>
-                                                                                            <i class="fa fa-star"></i>
-                                                                                        <?php }
-                                                                                    }
-                                                                                ?>
-                                                                            </span>
+                                                                            <figure>
+                                                                                <img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="#"/>
+                                                                                <span>
+                                                                                    <?php
+                                                                                        for ($k=0; $k < 5; $k++) {
+                                                                                            if ($key['rating'] > $k) { ?>
+                                                                                                <i class="fa fa-star checked"></i>
+                                                                                            <?php } else { ?>
+                                                                                                <i class="fa fa-star"></i>
+                                                                                            <?php }
+                                                                                        }
+                                                                                    ?>
+                                                                                </span>
                                                                             </figure>
                                                                         </div>
-                                                                    <h3><?= $key['nama']; ?></h3>
+                                                                    <h3><a href="detail/<?= $key['idTempat']; ?>"><?= $key['nama']; ?></a></h3>
                                                                     <p><?= $key['alamat']; ?></p>
                                                                     </div>
                                                                 </div>

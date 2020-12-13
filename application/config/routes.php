@@ -7,3 +7,4 @@ $route['translate_uri_dashes']  = FALSE;
 $route['daftar']                = 'daftar';
 $route['editProfile']           = 'user/editProfile';
 $route['pencarian']             = 'pencarian';
+$route['detail/(:num)']         = 'tempat/detail/$1';
