@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>{title}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -54,27 +54,30 @@
                     </div>
                 </div>
             </div>
-			<div class="wrap-login100 p-t-30 p-b-50">
-				<form class="login100-form validate-form p-b-33 p-t-5" method="post" action="<?= base_url('login'); ?>">
-                    <?php if ($this->session->pesan) echo $this->session->pesan; ?>
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="User name" required>
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password" required>
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="login100-form validate-form p-b-33 p-t-5" method="post" action="<?= base_url('lupaPassword'); ?>">
+                                    <?php if ($this->session->pesan) echo $this->session->pesan; ?>
+                                    <h6>Kesulitan untuk masuk?</h6>
+                                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                                        <input class="input100" type="text" name="email" placeholder="Masukan Email" required>
+                                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                                    </div>
+                                    <div class="container-login100-form-btn m-t-32">
+                                        <button class="login100-form-btn" type="submit">
+                                            Kirim
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <a href="<?= base_url(); ?>lupaPassword" class="ml-3">Lupa password?</a>
-					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn" type="submit">
-							Login
-						</button>
-                    </div>
-                    <div class="text-center">
-                        Belum punya akun? <a href="daftar">Daftar</a>
-                    </div>
-				</form>
+                    <div class="col-3"></div>
+                </div>
             </div>
         </div>
 	</div>

@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class UserModel extends CI_Model {
 
     private $idUser;
+    private $email;
 
 	public function set($jenis, $isi)
 	{
@@ -54,5 +55,12 @@ class UserModel extends CI_Model {
         } else {
             return $this->upload->data('file_name');
         }
+    }
+
+    public function getByEmail()
+    {
+        return $this->db->get_where('users', [
+            'email' => $this->email
+        ])->row_array();
     }
 }

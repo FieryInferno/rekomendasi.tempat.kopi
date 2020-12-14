@@ -12,10 +12,10 @@
         </div>
         <ul class="list-unstyled components">
             <li>
-                <a href="editProfile">Edit Profile</a>
+                <a href="<?= base_url(); ?>editProfile">Edit Profile</a>
             </li>
             <li>
-                <a href="logout">Logout</a>
+                <a href="<?= base_url(); ?>logout">Logout</a>
             </li>
         </ul>
     </nav>
