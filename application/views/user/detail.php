@@ -48,7 +48,7 @@
                                     ?>
                                 </div>
                                 <br>
-                                <a href="review" class="btn btn-success">Tulis Review</a>
+                                <a href="<?= base_url(); ?>review/{id_tempat_ngopi}" class="btn btn-success">Tulis Review</a>
                             </div>
                         </div>
                     </div>

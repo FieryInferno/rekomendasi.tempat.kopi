@@ -8,3 +8,4 @@ $route['daftar']                = 'daftar';
 $route['editProfile']           = 'user/editProfile';
 $route['pencarian']             = 'pencarian';
 $route['detail/(:num)']         = 'tempat/detail/$1';
+$route['review/(:num)']         = 'tempat/review/$1';

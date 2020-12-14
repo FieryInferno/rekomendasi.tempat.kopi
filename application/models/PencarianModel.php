@@ -15,7 +15,8 @@ class PencarianModel extends CI_Model {
     {
         if ($this->nama) {
             $this->db->like('nama', $this->nama);
-            $dataTempat = $this->db->get('tempat')->result_array();
+            $dataTempat = $this->db->get('tempat_ngopi')->result_array();
+            $dataTempat = $this->hitungRating($dataTempat);
         } else {
             $dataTempat = [];
         }
@@ -25,9 +26,26 @@ class PencarianModel extends CI_Model {
             $dataFasilitas  = $this->db->get_where('fasilitasTempat', [
                 'fasilitas' => $this->fasilitas
             ])->result_array();
+            $dataFasilitas = $this->hitungRating($dataFasilitas);
         } else {
             $dataFasilitas  = [];
         }
         return array_map("unserialize", array_unique(array_map("serialize", array_merge($dataTempat, $dataFasilitas))));
+    }
+
+    private function hitungRating($data)
+    {
+        for ($i=0; $i < count($data); $i++) { 
+            $key        = $data[$i];
+            $rating     = $this->db->get_where('rating', [
+                'id_tempat_ngopi'   => $key['id_tempat_ngopi']
+            ])->result_array();
+            $totalRating    = 0;
+            foreach ($rating as $key) {
+                $totalRating    += (integer) $key['rating'];
+            }
+            $data[$i]['rating'] = $totalRating/count($rating);
+        }
+        return $data;
     }
 }

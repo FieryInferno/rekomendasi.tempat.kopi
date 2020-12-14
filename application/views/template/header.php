@@ -31,7 +31,7 @@
                         <div class="right_header_info">
                             <ul>
                                 <li class="dinone"><a href="<?= base_url(); ?>">Beranda</a></li>
-                                <li class="dinone"><a href="pencarian">Pencarian</a></li>
+                                <li class="dinone"><a href="<?= base_url(); ?>pencarian">Pencarian</a></li>
                                 <li class="dinone"><a href="">Rekomendasi</a></li>
                                 <li class="dinone">Hi, <?= $this->session->username; ?></li>
                                 <li>

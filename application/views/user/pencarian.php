@@ -70,7 +70,7 @@
                                                                                 </span>
                                                                             </figure>
                                                                         </div>
-                                                                    <h3><a href="detail/<?= $key['idTempat']; ?>"><?= $key['nama']; ?></a></h3>
+                                                                    <h3><a href="detail/<?= $key['id_tempat_ngopi']; ?>"><?= $key['nama']; ?></a></h3>
                                                                     <p><?= $key['alamat']; ?></p>
                                                                     </div>
                                                                 </div>

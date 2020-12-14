@@ -32,7 +32,8 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-        $data['title']  = 'Rekomendasi Tempat Ngopi';
+        $data['title']          = 'Rekomendasi Tempat Ngopi';
+        $data['tempatNgopi']    = $this->TempatModel->get();
         $this->parser->parse('user/user', $data);
     }
     

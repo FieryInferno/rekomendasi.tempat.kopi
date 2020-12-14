@@ -51,7 +51,7 @@
                                                 <input class="form-control" placeholder="Tanggal Lahir" type="date" name="tanggalLahir" value="{tanggalLahir}" required>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                <input class="form-control" placeholder="Tanggal Lahir" type="email" name="email" value="{email}" required>
+                                                <input class="form-control" placeholder="Email" type="email" name="email" value="{email}" required>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                                 <button class="send">Simpan</button>
