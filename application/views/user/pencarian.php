@@ -57,7 +57,7 @@
                                                                         <div class="blog_img_box">
                                                                             <figure>
                                                                                 <img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="#"/>
-                                                                                <span>
+                                                                                <span style="width:auto;">
                                                                                     <?php
                                                                                         for ($k=0; $k < 5; $k++) {
                                                                                             if ($key['rating'] > $k) { ?>
@@ -77,7 +77,11 @@
                                                             <?php }
                                                             $i++;
                                                         }
+                                                        
                                                     ?>
+                                                </div>
+                                                <div class="row d-flex justify-content-center">
+                                                    <?= $this->pagination->create_links(); ?>
                                                 </div>
                                             </div>
                                         </div>

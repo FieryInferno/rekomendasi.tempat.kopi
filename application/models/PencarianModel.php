@@ -26,12 +26,23 @@ class PencarianModel extends CI_Model {
             $dataFasilitas  = $this->db->get_where('fasilitasTempat', [
                 'fasilitas' => $this->fasilitas
             ])->result_array();
-            $dataFasilitas = $this->hitungRating($dataFasilitas);
+            $dataFasilitas  = $this->hitungRating($dataFasilitas);
         } else {
             $dataFasilitas  = [];
         }
-        return array_map("unserialize", array_unique(array_map("serialize", array_merge($dataTempat, $dataFasilitas))));
+        $data   = array_map("unserialize", array_unique(array_map("serialize", array_merge($dataTempat, $dataFasilitas))));
+        usort($data, [$this, 'ratingCompare']);
+        return $data;
+        // print_r($data);die();
+        // return array_map("unserialize", array_unique(array_map("serialize", array_merge($dataTempat, $dataFasilitas))));
     }
+	
+	function ratingCompare($a, $b)
+	{
+		$t1 = $a['rating'];
+		$t2 = $b['rating'];
+		return $t2 - $t1;
+	}   
 
     private function hitungRating($data)
     {

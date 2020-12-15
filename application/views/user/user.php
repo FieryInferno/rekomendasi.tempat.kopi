@@ -29,7 +29,7 @@
                                                 <img src="<?= base_url('assets/images/' . $key['foto']); ?>" alt="#" />
                                             </div>
                                             <div class="product_blog_cont">
-                                                <h3><?= $key['nama']; ?></h3>
+                                                <h3><a href="detail/<?= $key['id_tempat_ngopi']; ?>" style="color:#fff;"><?= $key['nama']; ?></a></h3>
                                             </div>
                                         </div>
                                     <?php }

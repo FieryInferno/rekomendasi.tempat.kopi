@@ -9,7 +9,7 @@ class User extends CI_Controller {
     private $jenisKelamin;
     private $pekerjaan;
     private $tanggalLahir;
-    private $email;
+    private $emailUser;
     
     public function __construct()
     {

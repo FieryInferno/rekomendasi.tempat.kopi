@@ -47,6 +47,7 @@
                                                 <select class="custom-select" name="harga" required>
                                                     <option value="" selected>Pilih Harga</option>
                                                     <option value="<50000">< Rp. 50.000</option>
+                                                    <option value=">50000">> Rp. 50.000</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -79,7 +80,7 @@
                                             <br/>
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1">Upload Foto</label>
-                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto">
+                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto[]" multiple>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Kirim</button>
                                         </div>
@@ -98,7 +99,42 @@
                                     foreach ($review as $key) { ?>
                                         <div class="row">
                                             <div class="col-2">
-                                                <img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="img" width="75px" height="75px"/>
+                                                <div id="<?= $key['id_review']; ?>" class="carousel slide" data-ride="carousel">
+                                                    <ol class="carousel-indicators">
+                                                        <?php
+                                                            for ($i=0; $i < count($key['foto']); $i++) {  ?>
+                                                                <li data-target="#<?= $key['id_review']; ?>" data-slide-to="<?= $i; ?>" <?= $i == 0 ? 'class="active"' : ''; ?>></li>
+                                                            <?php }
+                                                        ?>
+                                                        <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+                                                    </ol>
+                                                    <div class="carousel-inner">
+                                                        <?php
+                                                            $i  = 0;
+                                                            foreach ($key['foto'] as $foto) { ?>
+                                                                <div class="carousel-item <?= $i == 0 ? 'active' : ''; ?>">
+                                                                    <img class="d-block w-100" src="<?= base_url('assets/images/' . $foto['foto']); ?>">
+                                                                </div>
+                                                            <?php $i++; 
+                                                            }
+                                                        ?>
+                                                        <!-- <div class="carousel-item">
+                                                        <img class="d-block w-100" src="..." alt="Second slide">
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                        <img class="d-block w-100" src="..." alt="Third slide">
+                                                        </div> -->
+                                                    </div>
+                                                    <a class="carousel-control-prev" href="#<?= $key['id_review']; ?>" role="button" data-slide="prev" style="left:0px;;background:#000;width:auto;height:auto;top:0%;">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#<?= $key['id_review']; ?>" role="button" data-slide="next" style="right:0px;;background:#000;width:auto;height:auto;top:0%;">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="col-10">
                                                 <div class="card">

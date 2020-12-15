@@ -138,7 +138,7 @@
     owl.owlCarousel({
         margin: 10,
         nav: true,
-        loop: true,
+        <?= count($tempatNgopi) > 5 ? 'loop: true,' : '' ; ?>
         responsive: {
         0: {
             items: 1
