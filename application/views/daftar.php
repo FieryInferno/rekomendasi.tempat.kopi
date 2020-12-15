@@ -129,7 +129,7 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="staticEmail" placeholder="Email" required name="email" value="<?= set_value('email'); ?>">
+                                    <input type="text" class="form-control" id="staticEmail" placeholder="Email" required name="emailUser" value="<?= set_value('email'); ?>">
                                 </div>
                             </div>
                             <div class="container-login100-form-btn m-t-32">

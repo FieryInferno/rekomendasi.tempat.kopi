@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class UserModel extends CI_Model {
 
     private $idUser;
-    private $email;
+    private $emailUser;
 
 	public function set($jenis, $isi)
 	{
@@ -33,7 +33,7 @@ class UserModel extends CI_Model {
             'jenisKelamin'  => $this->jenisKelamin,
             'pekerjaan'     => $this->pekerjaan,
             'tanggalLahir'  => $this->tanggalLahir,
-            'email'         => $this->email,
+            'email'         => $this->emailUser,
             'level'         => 'user',
             'foto'          => $foto
         ];
@@ -60,7 +60,7 @@ class UserModel extends CI_Model {
     public function getByEmail()
     {
         return $this->db->get_where('users', [
-            'email' => $this->email
+            'email' => $this->emailUser
         ])->row_array();
     }
 }

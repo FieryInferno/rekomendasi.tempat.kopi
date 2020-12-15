@@ -90,7 +90,7 @@ class Login extends CI_Controller {
     public function lupaPassword()
     {
         if ($this->input->post()) {
-            $this->UserModel->set('email', $this->emailUser);
+            $this->UserModel->set('emailUser', $this->emailUser);
             $data   = $this->UserModel->getByEmail();
             if ($data) {
                 $config = [

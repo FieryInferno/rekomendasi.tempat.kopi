@@ -27,7 +27,7 @@ class User extends CI_Controller {
         $this->jenisKelamin = $this->input->post('jenisKelamin');
         $this->pekerjaan    = $this->input->post('pekerjaan');
         $this->tanggalLahir = $this->input->post('tanggalLahir');
-        $this->email        = $this->input->post('email');
+        $this->emailUser    = $this->input->post('email');
     }
 
 	public function index()
@@ -48,7 +48,7 @@ class User extends CI_Controller {
                 $this->UserModel->set('jenisKelamin', $this->jenisKelamin);
                 $this->UserModel->set('pekerjaan', $this->pekerjaan);
                 $this->UserModel->set('tanggalLahir', $this->tanggalLahir);
-                $this->UserModel->set('email', $this->email);
+                $this->UserModel->set('emailUser', $this->email);
                 $data   = $this->UserModel->edit();
                 if ($data) {
                     $this->session->set_flashdata('pesan',

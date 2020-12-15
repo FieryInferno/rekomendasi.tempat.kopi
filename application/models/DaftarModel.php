@@ -9,7 +9,7 @@ class DaftarModel extends CI_Model {
     private $jenisKelamin;
     private $pekerjaan;
     private $tanggalLahir;
-    private $email;
+    private $emailUser;
 
 	public function set($jenis, $isi)
 	{
@@ -25,7 +25,7 @@ class DaftarModel extends CI_Model {
             'jenisKelamin'  => $this->jenisKelamin,
             'pekerjaan'     => $this->pekerjaan,
             'tanggalLahir'  => $this->tanggalLahir,
-            'email'         => $this->email,
+            'email'         => $this->emailUser,
             'level'         => 'user'
         ]);
     }

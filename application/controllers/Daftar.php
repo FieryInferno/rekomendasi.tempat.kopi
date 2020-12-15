@@ -9,7 +9,7 @@ class Daftar extends CI_Controller {
     private $jenisKelamin;
     private $pekerjaan;
     private $tanggalLahir;
-    private $email;
+    private $emailUser;
 
     public function __construct()
     {
@@ -20,7 +20,7 @@ class Daftar extends CI_Controller {
         $this->jenisKelamin = $this->input->post('jenisKelamin');
         $this->pekerjaan    = $this->input->post('pekerjaan');
         $this->tanggalLahir = $this->input->post('tanggalLahir');
-        $this->email        = $this->input->post('email');
+        $this->emailUser    = $this->input->post('emailUser');
     }
     
 	public function index()
@@ -34,7 +34,7 @@ class Daftar extends CI_Controller {
                 $this->DaftarModel->set('jenisKelamin', $this->jenisKelamin);
                 $this->DaftarModel->set('pekerjaan', $this->pekerjaan);
                 $this->DaftarModel->set('tanggalLahir', $this->tanggalLahir);
-                $this->DaftarModel->set('email', $this->email);
+                $this->DaftarModel->set('emailUser', $this->emailUser);
                 $data   = $this->DaftarModel->daftar();
                 if ($data) {
                     $this->session->set_flashdata('pesan',
@@ -82,6 +82,6 @@ class Daftar extends CI_Controller {
 		$this->form_validation->set_rules('jenisKelamin', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required');
 		$this->form_validation->set_rules('tanggalLahir', 'Tanggal Lahir', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('emailUser', 'Email', 'trim|required|valid_email');
     }
 }
