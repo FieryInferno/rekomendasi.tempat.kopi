@@ -83,7 +83,6 @@ class Tempat extends CI_Controller {
         $data['title']      = 'Review Tempat Ngopi';
         $data['fasilitas']  = $this->FasilitasModel->get();
         $data['review']     = $this->ReviewModel->get();
-        // print_r($data['review']);die();
         $this->parser->parse('user/review', $data);
     }
 

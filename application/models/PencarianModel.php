@@ -21,8 +21,8 @@ class PencarianModel extends CI_Model {
             $dataTempat = [];
         }
         if ($this->fasilitas) {
-            $this->db->select('tempat.*');
-            $this->db->join('tempat', 'fasilitasTempat.tempat = tempat.idTempat');
+            $this->db->select('tempat_ngopi.*');
+            $this->db->join('tempat_ngopi', 'fasilitasTempat.tempat = tempat_ngopi.id_tempat_ngopi');
             $dataFasilitas  = $this->db->get_where('fasilitasTempat', [
                 'fasilitas' => $this->fasilitas
             ])->result_array();
@@ -33,8 +33,6 @@ class PencarianModel extends CI_Model {
         $data   = array_map("unserialize", array_unique(array_map("serialize", array_merge($dataTempat, $dataFasilitas))));
         usort($data, [$this, 'ratingCompare']);
         return $data;
-        // print_r($data);die();
-        // return array_map("unserialize", array_unique(array_map("serialize", array_merge($dataTempat, $dataFasilitas))));
     }
 	
 	function ratingCompare($a, $b)

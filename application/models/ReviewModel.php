@@ -25,7 +25,7 @@ class ReviewModel extends CI_Model {
             'judul'             => $this->judul,
             'review_pengguna'   => $this->review,
             'harga'             => $this->harga,
-            'foto'              => $idImage
+            'id_user'           => $this->session->idUser
         ]);
         $this->db->insert('rating', [
             'id_user'           => $this->session->idUser,
@@ -50,7 +50,7 @@ class ReviewModel extends CI_Model {
                     'id_image'          => $idImage,
                     'id_tempat_ngopi'   => $this->idTempat,
                     'foto'              => $foto,
-                    'id_review'         => '1'
+                    'id_review'         => $idReview
                 ]);
             } else {
                 $idImage    = NULL;
@@ -70,8 +70,9 @@ class ReviewModel extends CI_Model {
 
     public function get()
     {
-        $this->db->select('review.judul, rating.rating, review.review_pengguna, review.id_review');
+        $this->db->select('review.judul, rating.rating, review.review_pengguna, review.id_review, users.foto as fotoUser');
         $this->db->join('rating', 'review.id_review = rating.id_review');
+        $this->db->join('users', 'review.id_user = users.id_user');
         $data   = $this->db->get_where('review', [
             'review.id_tempat_ngopi'   => $this->idTempat
         ])->result_array();
