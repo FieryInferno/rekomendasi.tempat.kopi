@@ -14,7 +14,7 @@ class UserModel extends CI_Model {
     public function get()
     {
         return $this->db->get_where('users', [
-            'idUser'  => $this->idUser
+            'id_user'  => $this->idUser
         ])->row_array();
     }
 
@@ -40,7 +40,7 @@ class UserModel extends CI_Model {
         if ($this->password) {
             $data['password']   = password_hash($this->password, PASSWORD_DEFAULT);
         }
-        $this->db->where('idUser', $this->session->idUser);
+        $this->db->where('id_user', $this->session->idUser);
         return $this->db->update('users', $data);
     }
 
