@@ -10,3 +10,4 @@ $route['pencarian']             = 'pencarian';
 $route['detail/(:num)']         = 'tempat/detail/$1';
 $route['review/(:num)']         = 'tempat/review/$1';
 $route['lupaPassword']          = 'login/lupaPassword';
+$route['edit_tempat/(:num)']    = 'tempat/edit/$1';

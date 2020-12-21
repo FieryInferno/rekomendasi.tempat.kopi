@@ -12,11 +12,7 @@ class Tempat extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->level) {
-            if ($this->session->level !== 'user') {
-                redirect(base_url());
-            }
-        } else {
+        if (!$this->session->level) {
             redirect('login');
         }
         $this->judul        = $this->input->post('judul');
@@ -92,5 +88,15 @@ class Tempat extends CI_Controller {
 		$this->form_validation->set_rules('review', 'Review', 'required|trim');
 		$this->form_validation->set_rules('tanggalPergi', 'Tanggal Pergi', 'required');
 		$this->form_validation->set_rules('harga', 'Harga Per Orang', 'required');
+    }
+
+    public function edit($idTempat)
+    {
+        $this->TempatModel->set('idTempat', $idTempat);
+        $data                   = $this->TempatModel->get();
+        $data['title']          = 'Edit Tempat Ngopi';
+        $data['fasilitas']      = $this->FasilitasModel->get();
+        // print_r($data);die();
+        $this->parser->parse('admin/edit_tempat', $data);
     }
 }

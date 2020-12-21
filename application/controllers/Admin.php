@@ -20,7 +20,6 @@ class Admin extends CI_Controller {
         $data['title']          = 'Rekomendasi Tempat Ngopi';
         $data['tempatNgopi']    = $this->TempatModel->get();
         $data['fasilitas']      = $this->FasilitasModel->get();
-        // print_r($data['tempatNgopi']);die();
         $this->parser->parse('admin/admin', $data);
     }
 }
