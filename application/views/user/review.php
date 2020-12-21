@@ -6,16 +6,16 @@
 <body class="main-layout">
     <?php $this->load->view('template/header'); ?>
     <div class="yellow_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="title">
-                                <h2>Review</h2>
-                            </div>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>Review</h2>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
         <section>
             <div class="container">
                 <div class="card">

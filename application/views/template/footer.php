@@ -100,8 +100,8 @@
 <script src="<?= base_url(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/custom.js"></script>
 <script src="<?= base_url(); ?>assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
 <script src="<?= base_url(); ?>assets/js/jquery-3.0.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $("#sidebar").mCustomScrollbar({
@@ -119,6 +119,8 @@
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
+
+        $('#table').DataTable();
     });
 </script>
 
