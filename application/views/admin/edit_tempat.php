@@ -24,7 +24,7 @@
                         <h3>Form Tambah Tempat Ngopi</h3>
                     </div>
                     <div class="card-body">
-                    <form class="login100-form validate-form" method="post" action="daftar">
+                    <form class="login100-form validate-form" method="post" action="<?= base_url(); ?>edit_tempat/{id_tempat_ngopi}">
                             <?php if ($this->session->pesan) echo $this->session->pesan; ?>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Nama Tempat Kopi</label>
@@ -41,7 +41,7 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Harga per orang</label>
                                 <div class="col-sm-10">
-                                    <select class="custom-select" name="harga" required>
+                                    <select class="custom-select" name="harga">
                                         <option value="" selected>Pilih Harga</option>
                                         <option value="<50000">< Rp. 50.000</option>
                                         <option value=">50000">> Rp. 50.000</option>

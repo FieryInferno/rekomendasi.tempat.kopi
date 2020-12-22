@@ -8,6 +8,10 @@ class Tempat extends CI_Controller {
     private $tanggalPergi;
     private $harga;
     private $rating;
+    private $nama;
+    private $alamat;
+    private $fasilitas;
+    private $oldFoto;
     
     public function __construct()
     {
@@ -20,6 +24,10 @@ class Tempat extends CI_Controller {
         $this->tanggalPergi = $this->input->post('tanggalPergi');
         $this->harga        = $this->input->post('harga');
         $this->rating       = $this->input->post('rating');
+        $this->nama         = $this->input->post('nama');
+        $this->alamat       = $this->input->post('alamat');
+        $this->fasilitas    = $this->input->post('fasilitas');
+        $this->oldFoto      = $this->input->post('oldFoto');
     }
 
 	public function detail($idTempat)
@@ -90,13 +98,58 @@ class Tempat extends CI_Controller {
 		$this->form_validation->set_rules('harga', 'Harga Per Orang', 'required');
     }
 
+    public function validationTempat()
+    {
+        $this->form_validation->set_rules('nama', 'Nama Tempat Kopi', 'required|trim');
+		$this->form_validation->set_rules('alamat', 'Alamat Tempat Kopi', 'required|trim');
+    }
+
     public function edit($idTempat)
     {
         $this->TempatModel->set('idTempat', $idTempat);
+        if ($this->input->post()) {
+            $this->validationTempat();
+            if ($this->form_validation->run()) {
+                $this->TempatModel->set('nama', $this->nama);
+                $this->TempatModel->set('alamat', $this->alamat);
+                $this->TempatModel->set('harga', $this->harga);
+                $this->TempatModel->set('fasilitas', $this->fasilitas);
+                $this->TempatModel->set('oldFoto', $this->oldFoto);
+                $data   = $this->TempatModel->edit();
+                if ($data) {
+                    $this->session->set_flashdata('pesan',
+                        '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Sukses!</strong> Data berhasil diedit
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    ');
+                } else {
+                    $this->session->set_flashdata('pesan',
+                        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Gagal!</strong> Data gagal diedit
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    ');
+                }
+                redirect('edit_tempat/' . $idTempat);
+            } else {
+                $this->session->set_flashdata('pesan', '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Gagal!</strong> ' . validation_errors() . '
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ');
+            }
+        }
         $data                   = $this->TempatModel->get();
         $data['title']          = 'Edit Tempat Ngopi';
         $data['fasilitas']      = $this->FasilitasModel->get();
-        // print_r($data);die();
         $this->parser->parse('admin/edit_tempat', $data);
     }
 }
