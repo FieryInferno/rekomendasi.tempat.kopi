@@ -24,7 +24,7 @@
                         <h3>Form Tambah Tempat Ngopi</h3>
                     </div>
                     <div class="card-body">
-                    <form class="login100-form validate-form" method="post" action="daftar">
+                    <form class="login100-form validate-form" method="post" action="<?= base_url(); ?>tambah_tempat">
                             <?php if ($this->session->pesan) echo $this->session->pesan; ?>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Nama Tempat Kopi</label>

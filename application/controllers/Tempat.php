@@ -152,4 +152,75 @@ class Tempat extends CI_Controller {
         $data['fasilitas']      = $this->FasilitasModel->get();
         $this->parser->parse('admin/edit_tempat', $data);
     }
+
+    public function hapus($idTempat)
+    {
+        $this->TempatModel->set('idTempat', $idTempat);
+        $data   = $this->TempatModel->hapus();
+        if ($data) {
+            $this->session->set_flashdata('pesan',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Sukses!</strong> Data berhasil dihapus
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            ');
+        } else {
+            $this->session->set_flashdata('pesan',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Gagal!</strong> Data gagal dihapus
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            ');
+        }
+        redirect('admin');
+    }
+
+    public function tambah()
+    {
+        $this->validationTempat();
+        if ($this->form_validation->run()) {
+            $this->TempatModel->set('nama', $this->nama);
+            $this->TempatModel->set('alamat', $this->alamat);
+            $this->TempatModel->set('harga', $this->harga);
+            $this->TempatModel->set('fasilitas', $this->fasilitas);
+            $data   = $this->TempatModel->tambah();
+            if ($data) {
+                $this->session->set_flashdata('pesan',
+                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Sukses!</strong> Data berhasil ditambah
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ');
+            } else {
+                $this->session->set_flashdata('pesan',
+                    '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Gagal!</strong> Data gagal ditambah
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ');
+            }
+            redirect('admin');
+        } else {
+            $this->session->set_flashdata('pesan', '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Gagal!</strong> ' . validation_errors() . '
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            ');
+            $data['title']          = 'Rekomendasi Tempat Ngopi';
+            $data['tempatNgopi']    = $this->TempatModel->get();
+            $data['fasilitas']      = $this->FasilitasModel->get();
+            $this->parser->parse('admin/admin', $data);
+        }
+    }
 }

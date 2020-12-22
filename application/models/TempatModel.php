@@ -51,7 +51,12 @@ class TempatModel extends CI_Model {
                 foreach ($rating as $key) {
                     $totalRating    += (integer) $key['rating'];
                 }
-                $data[$i]['rating'] = $totalRating/count($rating);
+                if (count($rating) == 0) {
+                    $jumlah = 1;
+                } else {
+                    $jumlah = count($rating);
+                }
+                $data[$i]['rating'] = $totalRating/$jumlah;
             }
         }
         return $data;
@@ -86,7 +91,7 @@ class TempatModel extends CI_Model {
     public function upload()
     {
         $config['upload_path']      = './assets/images/';
-        $config['allowed_types']    = 'gif|jpg|png';
+        $config['allowed_types']    = 'gif|jpg|png|jpeg';
         $config['max_size']         = 2000;
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('foto')) {
@@ -94,5 +99,34 @@ class TempatModel extends CI_Model {
         } else {
             return $this->upload->data('file_name');
         }
+    }
+
+    public function hapus()
+    {
+        $this->db->where('id_tempat_ngopi', $this->idTempat);
+        $data   = $this->db->delete('tempat_ngopi');
+        $this->db->where('tempat', $this->idTempat);
+        $this->db->delete('fasilitasTempat');
+        return $data;
+    }
+
+    public function tambah()
+    {
+        $idTempat   = uniqid('tempat');
+        $foto       = $this->upload();
+        $data       = $this->db->insert('tempat_ngopi', [
+            'id_tempat_ngopi'   => $idTempat,
+            'nama'              => $this->nama,
+            'alamat'            => $this->alamat,
+            'foto'              => $foto
+        ]);
+        foreach ($this->fasilitas as $key) {
+            $this->db->insert('fasilitasTempat', [
+                'tempat'    => $idTempat,
+                'fasilitas' => $key
+            ]);
+        }
+        return $data;
+
     }
 }
