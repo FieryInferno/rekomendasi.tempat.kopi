@@ -9,11 +9,7 @@ class Pencarian extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->level) {
-            if ($this->session->level !== 'user') {
-                redirect(base_url());
-            }
-        } else {
+        if (!$this->session->level) {
             redirect('login');
         }
         $this->nama         = $this->input->get('nama');
@@ -27,9 +23,9 @@ class Pencarian extends CI_Controller {
             $this->PencarianModel->set('fasilitas', $this->fasilitas);
             $data   = $this->PencarianModel->get();
             if ($data) {
-                $config['base_url']     = base_url() . 'pencarian?nama=' . $this->nama . '&' . 'fasilitas=' . $this->fasilitas;
-                $config['total_rows']   = count($data);
-                $config['per_page']     = 6;
+                $config['base_url']         = base_url() . 'pencarian?nama=' . $this->nama . '&' . 'fasilitas=' . $this->fasilitas;
+                $config['total_rows']       = count($data);
+                $config['per_page']         = 6;
                 $config['first_link']       = 'First';
                 $config['last_link']        = 'Last';
                 $config['next_link']        = 'Next';

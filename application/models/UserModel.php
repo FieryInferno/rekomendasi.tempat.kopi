@@ -13,9 +13,14 @@ class UserModel extends CI_Model {
     
     public function get()
     {
-        return $this->db->get_where('users', [
-            'id_user'  => $this->idUser
-        ])->row_array();
+        if ($this->idUser) {
+            return $this->db->get_where('users', [
+                'id_user'   => $this->idUser,
+                'level'     => 'user'
+            ])->row_array();
+        } else {
+            return $this->db->get_where('users', ['level'    => 'user'])->result_array();
+        }
     }
 
     public function edit()
