@@ -79,6 +79,7 @@ class Rekomendasi extends CI_Controller {
                 foreach ($pearson as $p) {
                     $bawah  += abs($p);
                 }
+                if ($bawah == 0) $bawah = 1;
                 $prediksi[$u['id_user']][$tempat['id_tempat_ngopi']] = $rataRata1 + ($atas / $bawah);
             }
         }
