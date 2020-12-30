@@ -25,10 +25,13 @@ class UserModel extends CI_Model {
 
     public function edit()
     {
+        // print_r($this->emailUser);die();
         if (!empty($_FILES['foto']['name'])) {
             $foto   = $this->upload();
-            $path   = 'assets/images/' . $this->input->post('gambarLama');
-            unlink($path);
+            if ($this->input->post('gambarLama') !== '') {
+                $path   = 'assets/images/' . $this->input->post('gambarLama');
+                unlink($path);
+            }
         } else {
             $foto   = $this->input->post('gambarLama');
         }

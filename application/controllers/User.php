@@ -48,7 +48,7 @@ class User extends CI_Controller {
                 $this->UserModel->set('jenisKelamin', $this->jenisKelamin);
                 $this->UserModel->set('pekerjaan', $this->pekerjaan);
                 $this->UserModel->set('tanggalLahir', $this->tanggalLahir);
-                $this->UserModel->set('emailUser', $this->email);
+                $this->UserModel->set('emailUser', $this->emailUser);
                 $data   = $this->UserModel->edit();
                 if ($data) {
                     $this->session->set_flashdata('pesan',
