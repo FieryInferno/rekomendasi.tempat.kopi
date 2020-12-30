@@ -54,8 +54,11 @@ class Rekomendasi extends CI_Controller {
                 $bawah2 += pow(($matrix[$key['id_user']][$value['id_tempat_ngopi']] - $rataRata), 2); 
             }
             $totalBawah = sqrt($bawah1 * $bawah2);
-            if ($totalBawah == 0) $totalBawah  = 1;
-            $pearson[$key['id_user']]   = $atas / $totalBawah;
+            if ($totalBawah == 0) {
+                $pearson[$key['id_user']]   = 0;
+            } else {
+                $pearson[$key['id_user']]   = $atas / $totalBawah;
+            }
         }
         $prediksi   = [];
         $mae        = [];
@@ -69,18 +72,29 @@ class Rekomendasi extends CI_Controller {
                 }
                 $rataRata1  = $rataRata1 / count($matrix[$u['id_user']]);
                 foreach ($user as $user1) {
-                    $rataRata   = 0;
-                    foreach ($matrix[$user1['id_user']] as $m) {
-                        $rataRata   += $m;
+                    if ($pearson[$user1['id_user']] !== 0) {
+                        $rataRata   = 0;
+                        foreach ($matrix[$user1['id_user']] as $m) {
+                            $rataRata   += $m;
+                        }
+                        $rataRata   = $rataRata / count($matrix[$user1['id_user']]);
+                        if ($matrix[$user1['id_user']][$tempat['id_tempat_ngopi']] !== 0) {
+                            $atas   += (($matrix[$user1['id_user']][$tempat['id_tempat_ngopi']] - $rataRata) * $pearson[$user1['id_user']]);
+                        } else {
+                            $atas   += 0;
+                        }
+                    } else {
+                        $atas   += 0;
                     }
-                    $rataRata   = $rataRata / count($matrix[$user1['id_user']]);
-                    $atas   += (($matrix[$user1['id_user']][$tempat['id_tempat_ngopi']] - $rataRata) * $pearson[$user1['id_user']]);
                 }
                 foreach ($pearson as $p) {
                     $bawah  += abs($p);
                 }
-                if ($bawah == 0) $bawah = 1;
-                $prediksi[$u['id_user']][$tempat['id_tempat_ngopi']] = $rataRata1 + ($atas / $bawah);
+                if ($bawah == 0) {
+                    $prediksi[$u['id_user']][$tempat['id_tempat_ngopi']] = 0;
+                } else {
+                    $prediksi[$u['id_user']][$tempat['id_tempat_ngopi']] = $rataRata1 + ($atas / $bawah);
+                }
             }
         }
         foreach ($tempatNgopi as $tempat) {
