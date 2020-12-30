@@ -37,9 +37,9 @@ class PencarianModel extends CI_Model {
 	
 	function ratingCompare($a, $b)
 	{
-		$t1 = $a['rating'];
+        $t1 = $a['rating'];
 		$t2 = $b['rating'];
-		return $t2 - $t1;
+		return $t2 > $t1;
 	}   
 
     private function hitungRating($data)

@@ -43,46 +43,26 @@
                             if ($pencarian) { ?>
                                 <h3>Hasil Pencarian</h3>
                                 <?php 
-                                    for ($i=0; $i < count($pencarian);) { ?>
-                                        <!-- blog -->
-                                        <div class="blog">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <?php
-                                                        for ($j=0; $j < 3; $j++) {  
-                                                            if (isset($pencarian[$i])) { 
-                                                                $key    = $pencarian[$i]; ?>
-                                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
-                                                                    <div class="blog_box">
-                                                                        <div class="blog_img_box">
-                                                                            <figure>
-                                                                                <img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="#"/>
-                                                                                <span style="width:auto;">
-                                                                                    <?php
-                                                                                        for ($k=0; $k < 5; $k++) {
-                                                                                            if ($key['rating'] > $k) { ?>
-                                                                                                <i class="fa fa-star checked"></i>
-                                                                                            <?php } else { ?>
-                                                                                                <i class="fa fa-star"></i>
-                                                                                            <?php }
-                                                                                        }
-                                                                                    ?>
-                                                                                </span>
-                                                                            </figure>
-                                                                        </div>
-                                                                    <h3><a href="detail/<?= $key['id_tempat_ngopi']; ?>"><?= $key['nama']; ?></a></h3>
-                                                                    <p><?= $key['alamat']; ?></p>
-                                                                    </div>
-                                                                </div>
-                                                            <?php }
-                                                            $i++;
-                                                        }
-                                                        
-                                                    ?>
-                                                </div>
+                                    for ($i=0; $i < count($pencarian); $i++) { 
+                                        $key    = $pencarian[$i]; ?>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="#"/>
+                                            </div>
+                                            <div class="col-8">
+                                                <h3><?= $key['nama']; ?></h3>
+                                                <h6><?= $key['alamat']; ?></h6> 
+                                                <?php
+                                                    for ($k=0; $k < 5; $k++) {
+                                                        if ($key['rating'] > $k) { ?>
+                                                            <i class="fa fa-star checked"></i>
+                                                        <?php } else { ?>
+                                                            <i class="fa fa-star"></i>
+                                                        <?php }
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
-                                        <!-- end blog -->
                                 <?php }
                             }
                         ?>
