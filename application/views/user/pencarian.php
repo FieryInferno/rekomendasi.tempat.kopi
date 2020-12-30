@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-body">
-                        <form action="pencarian" method="get">
+                        <form action="<?= base_url(); ?>pencarian" method="get">
                             <div class="row">
                                 <div class="col-6">
                                     <input class="tetter" placeholder="Tempat Ngopi" type="text" name="nama">
@@ -80,15 +80,15 @@
                                                         
                                                     ?>
                                                 </div>
-                                                <div class="row d-flex justify-content-center">
-                                                    <?= $this->pagination->create_links(); ?>
-                                                </div>
                                             </div>
                                         </div>
                                         <!-- end blog -->
                                 <?php }
                             }
                         ?>
+                        <div class="row d-flex justify-content-center">
+                            <?= $this->pagination->create_links(); ?>
+                        </div>
                     </div>
                 </div>
             </div>
