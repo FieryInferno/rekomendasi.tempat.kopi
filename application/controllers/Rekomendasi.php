@@ -53,7 +53,9 @@ class Rekomendasi extends CI_Controller {
                 $bawah1 += pow(($matrix[$this->session->idUser][$value['id_tempat_ngopi']] - $rataRataUser), 2);
                 $bawah2 += pow(($matrix[$key['id_user']][$value['id_tempat_ngopi']] - $rataRata), 2); 
             }
-            $pearson[$key['id_user']]   = $atas / sqrt($bawah1 * $bawah2);
+            $totalBawah = sqrt($bawah1 * $bawah2);
+            if ($totalBawah == 0) $totalBawah  = 1;
+            $pearson[$key['id_user']]   = $atas / $totalBawah;
         }
         $prediksi   = [];
         $mae        = [];
