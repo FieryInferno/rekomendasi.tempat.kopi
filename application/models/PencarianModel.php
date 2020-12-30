@@ -53,7 +53,9 @@ class PencarianModel extends CI_Model {
             foreach ($rating as $key) {
                 $totalRating    += (integer) $key['rating'];
             }
-            $data[$i]['rating'] = $totalRating/count($rating);
+            $jumlah = count($rating);
+            if (count($rating) == 0) $jumlah = 1;
+            $data[$i]['rating'] = $totalRating/$jumlah;
         }
         return $data;
     }
