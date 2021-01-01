@@ -149,7 +149,7 @@ class Tempat extends CI_Controller {
         }
         $data                   = $this->TempatModel->get();
         $data['title']          = 'Edit Tempat Ngopi';
-        $data['fasilitas']      = $this->FasilitasModel->get();
+        $data['fasilitas1']      = $this->FasilitasModel->get();
         $this->parser->parse('admin/edit_tempat', $data);
     }
 

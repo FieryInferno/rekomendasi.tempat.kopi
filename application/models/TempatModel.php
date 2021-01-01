@@ -22,7 +22,7 @@ class TempatModel extends CI_Model {
         }
         if ($this->idTempat) {
             $data   = $this->db->get('tempat_ngopi')->row_array();
-            $this->db->select('fasilitas.nama as namaFasilitas');
+            $this->db->select('fasilitas.idFasilitas, fasilitas.nama as namaFasilitas');
             $this->db->join('fasilitas', 'fasilitasTempat.fasilitas = fasilitas.idFasilitas');
             $data['fasilitas']  = $this->db->get_where('fasilitasTempat', [
                 'tempat'    => $this->idTempat
@@ -41,7 +41,7 @@ class TempatModel extends CI_Model {
             $data   = $this->db->get('tempat_ngopi')->result_array();
             for ($i=0; $i < count($data); $i++) { 
                 $key    = $data[$i];
-                $this->db->select('fasilitas.nama as namaFasilitas');
+                $this->db->select('fasilitas.idFasilitas, fasilitas.nama as namaFasilitas');
                 $this->db->join('fasilitas', 'fasilitasTempat.fasilitas = fasilitas.idFasilitas');
                 $data[$i]['fasilitas']  = $this->db->get_where('fasilitasTempat', [
                     'tempat'    => $key['id_tempat_ngopi']

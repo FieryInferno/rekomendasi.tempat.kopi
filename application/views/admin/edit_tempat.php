@@ -52,7 +52,7 @@
                                 <label for="inputPassword" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
                                     <?php
-                                        foreach ($fasilitas as $key) { ?>
+                                        foreach ($fasilitas1 as $key) { ?>
                                             <div class="row">
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="fasilitas[]" id="inlineRadio1" value="<?= $key['idFasilitas']; ?>" <?= in_array($key['idFasilitas'], array_column($fasilitas, 'idFasilitas')) ? 'checked' : '' ; ?>>
