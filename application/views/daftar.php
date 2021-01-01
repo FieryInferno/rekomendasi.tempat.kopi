@@ -81,7 +81,9 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" required name="password"> 
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" required name="password" oninput="validasiPassword(this)" pattern="(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}"> 
+                                    <span class="text-danger" style="display:none;" id="panjang">Password harus 8 karakter</span>
+                                    <span class="text-danger" style="display:none;" id="huruf">Password harus mengandung angka dan huruf</span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -133,7 +135,7 @@
                                 </div>
                             </div>
                             <div class="container-login100-form-btn m-t-32">
-                                <button class="login100-form-btn" type="submit">
+                                <button class="login100-form-btn" type="submit" id="tombol" disabled>
                                     Daftar
                                 </button>
                                 <a class="login100-form-btn" type="submit" href="login">
@@ -146,6 +148,26 @@
             </div>
         </div>
 	</div>
-	<div id="dropDownSelect1"></div>
+    <div id="dropDownSelect1"></div>
+    <script>
+        function validasiPassword(form) {
+            password    = $(form).val();
+            if (password.length < 8) {
+                $('#panjang').css('display', 'block');
+            } else {
+                $('#panjang').css('display', 'none');
+            }
+            huruf  = /[A-Z]|[a-z]/g;
+            angka  = /[0-9]/g;
+            if (password.match(huruf) && password.match(angka)) {
+                $('#huruf').css('display', 'none');
+            } else {
+                $('#huruf').css('display', 'block');
+            }
+            if (password.length < 8 && (password.match(huruf) && password.match(angka))) {
+                $('#tombol').prop('disabled', false);
+            }
+        }
+    </script>
 </body>
 </html>

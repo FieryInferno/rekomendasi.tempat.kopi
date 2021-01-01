@@ -14,3 +14,4 @@ $route['edit_tempat/(:any)']    = 'tempat/edit/$1';
 $route['hapus_tempat/(:any)']   = 'tempat/hapus/$1';
 $route['tambah_tempat']         = 'tempat/tambah';
 $route['rekomendasi']           = 'rekomendasi';
+$route['ganti_password']        = 'login/gantiPassword/$1';
