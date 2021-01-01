@@ -36,7 +36,7 @@ class TempatModel extends CI_Model {
             }
             $jumlah = count($rating);
             if (count($rating) == 0) $jumlah  = 1;
-            $data['rating'] = $totalRating/count($rating);
+            $data['rating'] = $totalRating/$jumlah;
         } else {
             $data   = $this->db->get('tempat_ngopi')->result_array();
             for ($i=0; $i < count($data); $i++) { 
