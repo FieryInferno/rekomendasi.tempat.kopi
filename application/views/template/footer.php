@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <h1>Total Review : 5 Tempat</h1> 
+                                        <h1>Total Review : <?= $jumlahReview; ?> Tempat</h1> 
                                     </div>
                                 </div>
                                     </form>

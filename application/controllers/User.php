@@ -87,8 +87,8 @@ class User extends CI_Controller {
             }
         } else {
             $this->UserModel->set('idUser', $this->session->idUser);
-            $data           = $this->UserModel->get();
-            $data['title']  = 'Edit Profile';
+            $data                   = $this->UserModel->get();
+            $data['title']          = 'Edit Profile';
             $this->parser->parse('user/editProfile', $data);
         }
     }

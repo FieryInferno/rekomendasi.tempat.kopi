@@ -14,10 +14,14 @@ class UserModel extends CI_Model {
     public function get()
     {
         if ($this->idUser) {
-            return $this->db->get_where('users', [
+            $data   = $this->db->get_where('users', [
                 'id_user'   => $this->idUser,
                 'level'     => 'user'
             ])->row_array();
+            $data['jumlahReview']   = $this->db->get_where('review', [
+                'id_user'   => $this->idUser
+            ])->num_rows();
+            return $data;
         } else {
             return $this->db->get_where('users', ['level'    => 'user'])->result_array();
         }
