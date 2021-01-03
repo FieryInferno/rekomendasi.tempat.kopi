@@ -14,7 +14,7 @@ class Rekomendasi extends CI_Controller {
 	public function index()
 	{
         $this->RatingModel->set('idUser', $this->session->idUser);
-        $ratingUserLogin    = $this->RatingModel->getBy();
+        $ratingUserLogin    = $this->RatingModel->getByUser();
         if ($ratingUserLogin) {
             $user           = $this->UserModel->get();
             $tempatNgopi    = $this->TempatModel->get();
