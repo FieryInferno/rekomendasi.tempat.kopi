@@ -17,7 +17,6 @@ class RatingModel extends CI_Model {
             'id_user'           => $this->idUser,
             'id_tempat_ngopi'   => $this->idTempatNgopi
         ])->result_array();
-        // print_r($data);die();
         if ($data) {
             $rating = 0;
             foreach ($data as $key) {
@@ -27,5 +26,12 @@ class RatingModel extends CI_Model {
         } else {
             return FALSE;
         }
+    }
+
+    public function getByUser()
+    {
+        return $this->db->get_where('rating', [
+            'id_user'   => $this->idUser
+        ])->row_array();
     }
 }

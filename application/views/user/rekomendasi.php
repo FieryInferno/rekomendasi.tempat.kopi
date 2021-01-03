@@ -21,29 +21,30 @@
                 <div class="card">
                     <div class="card-body">
                         <?php
-                            $no = 1;
-                            foreach ($rekomendasi as $key => $value) { 
-                                if ($no <= 5) { ?>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <img src="<?= base_url(); ?>assets/images/<?= $tempat[$key]['foto']; ?>" alt="#"/>
+                            if ($mae !== null) {$no = 1;
+                                foreach ($rekomendasi as $key => $value) { 
+                                    if ($no <= 5) { ?>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="<?= base_url(); ?>assets/images/<?= $tempat[$key]['foto']; ?>" alt="#"/>
+                                            </div>
+                                            <div class="col-8">
+                                                <h3><a href="<?= base_url('detail/' . $key); ?>"><?= $tempat[$key]['nama']; ?></a></h3>
+                                                <h6><?= $tempat[$key]['alamat']; ?></h6> 
+                                                <?php
+                                                    for ($k=0; $k < 5; $k++) {
+                                                        if ($tempat[$key]['rating'] > $k) { ?>
+                                                            <i class="fa fa-star checked"></i>
+                                                        <?php } else { ?>
+                                                            <i class="fa fa-star"></i>
+                                                        <?php }
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
-                                        <div class="col-8">
-                                            <h3><a href="<?= base_url('detail/' . $key); ?>"><?= $tempat[$key]['nama']; ?></a></h3>
-                                            <h6><?= $tempat[$key]['alamat']; ?></h6> 
-                                            <?php
-                                                for ($k=0; $k < 5; $k++) {
-                                                    if ($tempat[$key]['rating'] > $k) { ?>
-                                                        <i class="fa fa-star checked"></i>
-                                                    <?php } else { ?>
-                                                        <i class="fa fa-star"></i>
-                                                    <?php }
-                                                }
-                                            ?>
-                                        </div>
-                                    </div>
-                                <?php } 
-                                $no++;    
+                                    <?php } 
+                                    $no++;    
+                                }
                             }
                         ?>
                     </div>

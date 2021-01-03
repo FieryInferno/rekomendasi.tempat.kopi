@@ -164,7 +164,7 @@
             } else {
                 $('#huruf').css('display', 'block');
             }
-            if (password.length < 8 && (password.match(huruf) && password.match(angka))) {
+            if (password.length >= 8 && (password.match(huruf) && password.match(angka))) {
                 $('#tombol').prop('disabled', false);
             }
         }
