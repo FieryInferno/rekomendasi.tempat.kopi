@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <?php
-                            if ($mae !== null) {$no = 1;
+                            if ($rekomendasi !== null) {$no = 1;
                                 foreach ($rekomendasi as $key => $value) { 
                                     if ($no <= 5) { ?>
                                         <div class="row">
