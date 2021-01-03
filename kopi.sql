@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 31 Des 2020 pada 07.25
+-- Waktu pembuatan: 02 Jan 2021 pada 16.29
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -190,22 +190,23 @@ CREATE TABLE `users` (
   `pekerjaan` varchar(191) DEFAULT NULL,
   `tanggalLahir` date DEFAULT NULL,
   `email` varchar(191) DEFAULT NULL,
-  `foto` varchar(191) DEFAULT NULL
+  `foto` varchar(191) DEFAULT NULL,
+  `token` varchar(191) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `level`, `nama`, `jenisKelamin`, `pekerjaan`, `tanggalLahir`, `email`, `foto`) VALUES
-(1, 'bagas', '$2y$10$ImmCljlwd2/1HHNdenp.yuyuhLp/9xoVkrqRk101iKZ2Wc1kWkt32', 'user', 'M. Bagas Setia', 'l', 'mahasiswa', '2020-12-30', 'bagassetia271@gmail.com', 'Cuplikan_layar_dari_2020-11-28_17-43-47.png'),
-(3, 'admin', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'admin', 'admin', 'l', 'mahasiswa', '2020-12-30', 'setiapermanabagas@gmail.com', NULL),
-(4, 'a', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'b', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'c', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'd', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'e', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'f', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`id_user`, `username`, `password`, `level`, `nama`, `jenisKelamin`, `pekerjaan`, `tanggalLahir`, `email`, `foto`, `token`) VALUES
+(1, 'bagas', '$2y$10$Rz/Dm3/.UWHH/1FFKt012OSRhKjFiRtHzhITHykIfc6BFbl/05L9e', 'user', 'M. Bagas Setia', 'l', 'mahasiswa', '2020-12-30', 'bagassetia271@gmail.com', 'Cuplikan_layar_dari_2020-11-28_17-43-47.png', '9420f8559652dce0c202749cafa12376'),
+(3, 'admin', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'admin', 'admin', 'l', 'mahasiswa', '2020-12-30', 'setiapermanabagas@gmail.com', NULL, NULL),
+(4, 'a', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'b', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'c', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'd', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'e', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'f', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables

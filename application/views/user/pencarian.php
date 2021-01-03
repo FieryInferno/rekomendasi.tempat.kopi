@@ -51,7 +51,7 @@
                                                     <img src="<?= base_url(); ?>assets/images/<?= $key['foto']; ?>" alt="#"/>
                                                 </div>
                                                 <div class="col-8">
-                                                    <h3><?= $key['nama']; ?></h3>
+                                                    <h3><a href="<?= base_url('detail/' . $key['id_tempat_ngopi']); ?>"><?= $key['nama']; ?></a></h3>
                                                     <h6><?= $key['alamat']; ?></h6> 
                                                     <?php
                                                         for ($k=0; $k < 5; $k++) {
@@ -105,7 +105,7 @@
                                         <img src="<?= base_url(); ?>assets/images/${element['foto']}" alt="#"/>
                                     </div>
                                     <div class="col-8">
-                                        <h3>${element['nama']}</h3>
+                                        <h3><a href="<?= base_url(); ?>detail/${element['id_tempat_ngopi']}">${element['nama']}</a></h3>
                                         <h6>${element['alamat']}</h6>` + rating +
                                     `</div>
                                 </div>`;

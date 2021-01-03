@@ -64,7 +64,7 @@
                                     <?php if ($this->session->pesan) echo $this->session->pesan; ?>
                                     <input type="hidden" value="{token}" name="token">
                                     <div class="wrap-input100 validate-input" data-validate = "Enter password">
-                                        <input class="input100" type="password" name="pass" placeholder="Masukan Password Baru" required oninput="validasiPassword(this)" pattern="(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                                        <input class="input100" type="password" name="pass" placeholder="Masukan Password Baru" required oninput="validasiPassword(this)">
                                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                                         <span class="text-danger" style="display:none;" id="panjang">Password harus 8 karakter</span>
                                         <span class="text-danger" style="display:none;" id="huruf">Password harus mengandung angka dan huruf</span>
@@ -103,7 +103,7 @@
             } else {
                 $('#huruf').css('display', 'block');
             }
-            if (password.length < 8 && (password.match(huruf) && password.match(angka))) {
+            if (password.length >= 8 && (password.match(huruf) && password.match(angka))) {
                 $('#tombol').prop('disabled', false);
             }
         }

@@ -29,7 +29,7 @@
                                             <img src="<?= base_url(); ?>assets/images/<?= $tempat[$key]['foto']; ?>" alt="#"/>
                                         </div>
                                         <div class="col-8">
-                                            <h3><?= $tempat[$key]['nama']; ?></h3>
+                                            <h3><a href="<?= base_url('detail/' . $key); ?>"><?= $tempat[$key]['nama']; ?></a></h3>
                                             <h6><?= $tempat[$key]['alamat']; ?></h6> 
                                             <?php
                                                 for ($k=0; $k < 5; $k++) {

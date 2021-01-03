@@ -114,7 +114,7 @@
 }
 </style>
 <?php
-    if ($this->uri->segment(2) == 'user') { ?>
+    if ($this->uri->segment(1) == 'user') { ?>
         <script>
             $(document).ready(function() {
             var owl = $('.owl-carousel');
