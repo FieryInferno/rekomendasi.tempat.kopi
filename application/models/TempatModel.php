@@ -129,6 +129,12 @@ class TempatModel extends CI_Model {
             ]);
         }
         return $data;
+    }
 
+    public function tempatSudahDireview()
+    {
+        return $this->db->get_where('review', [
+            'id_user'   => $this->session->idUser
+        ])->result_array();
     }
 }

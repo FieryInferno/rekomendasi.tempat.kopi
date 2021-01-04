@@ -108,6 +108,15 @@ class Rekomendasi extends CI_Controller {
                 $mae[$tempat['id_tempat_ngopi']]    = $jumlah / count($user);
             }
             arsort($mae);
+            $tempatSudahDireview    = $this->TempatModel->tempatSudahDireview();
+            foreach ($tempatSudahDireview as $key) {
+                foreach ($mae as $k => $value) {
+                    if ($key['id_user'] == $k) {
+                        unset($mae[$key['id_user']]);
+                        break;
+                    }
+                }
+            }
         } else {
             $mae    = null;
         }
