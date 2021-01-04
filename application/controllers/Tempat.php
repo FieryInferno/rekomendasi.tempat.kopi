@@ -50,6 +50,7 @@ class Tempat extends CI_Controller {
                 $this->ReviewModel->set('tanggalPergi', $this->tanggalPergi);
                 $this->ReviewModel->set('harga', $this->harga);
                 $this->ReviewModel->set('rating', $this->rating);
+                $this->ReviewModel->set('fasilitas', $this->fasilitas);
                 $data   = $this->ReviewModel->insert();
                 if ($data) {
                     $this->session->set_flashdata('pesan',

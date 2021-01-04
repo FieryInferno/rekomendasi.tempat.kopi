@@ -17,6 +17,22 @@ class ReviewModel extends CI_Model {
     
     public function insert()
     {
+        $fasilitas  = $this->db->get_where('fasilitasTempat', [
+            'tempat'    => $this->idTempat
+        ])->result_array();
+        foreach ($fasilitas as $key) {
+            if (!in_array($key['fasilitas'], $this->fasilitas)) {
+                array_push($this->fasilitas, $key['fasilitas']);
+            }
+        }
+        $this->db->where('tempat', $this->idTempat);
+        $this->db->delete('fasilitasTempat');
+        foreach ($this->fasilitas as $key) {
+            $this->db->insert('fasilitasTempat', [
+                'tempat'    => $this->idTempat,
+                'fasilitas' => $key
+            ]);
+        }
         $idReview   = uniqid('review_');
         $data   = $this->db->insert('review', [
             'id_review'         => $idReview,
