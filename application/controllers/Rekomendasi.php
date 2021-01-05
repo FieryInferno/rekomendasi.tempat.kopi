@@ -109,14 +109,18 @@ class Rekomendasi extends CI_Controller {
             }
             arsort($mae);
             $tempatSudahDireview    = $this->TempatModel->tempatSudahDireview();
+            print_r($tempatSudahDireview); echo '<br/>';
+            print_r($mae); echo '<br/>';
             foreach ($tempatSudahDireview as $key) {
                 foreach ($mae as $k => $value) {
-                    if ($key['id_user'] == $k) {
-                        unset($mae[$key['id_user']]);
+                    if ($key['id_tempat_ngopi'] == $k) {
+                        unset($mae[$key['id_tempat_ngopi']]);
                         break;
                     }
                 }
             }
+            print_r($mae); 
+            // die();
         } else {
             $mae    = null;
         }
