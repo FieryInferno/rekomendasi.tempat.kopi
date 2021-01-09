@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 02 Jan 2021 pada 16.29
+-- Waktu pembuatan: 08 Jan 2021 pada 09.23
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -64,15 +64,24 @@ CREATE TABLE `fasilitasTempat` (
 --
 
 INSERT INTO `fasilitasTempat` (`idFasilitasTempat`, `tempat`, `fasilitas`) VALUES
-(2, '1', 1),
 (3, '2', 1),
 (5, '4', 1),
 (6, '5', 1),
 (8, '7', 1),
 (9, '8', 1),
 (11, '3', 1),
-(12, '6', 1),
-(13, '9', 1);
+(13, '9', 1),
+(14, '1', 1),
+(15, '1', 6),
+(16, '1', 7),
+(17, '1', 8),
+(18, '6', 2),
+(19, '6', 3),
+(20, '6', 1),
+(25, 'tempat5ff41e21f03f0', 1),
+(26, 'tempat5ff41e21f03f0', 2),
+(27, 'tempat5ff41e21f03f0', 3),
+(28, 'tempat5ff41e21f03f0', 4);
 
 -- --------------------------------------------------------
 
@@ -96,7 +105,9 @@ INSERT INTO `image` (`id_image`, `id_tempat_ngopi`, `foto`, `id_review`) VALUES
 ('image_5fd8c0fb89974', '1', 'Cuplikan_layar_dari_2020-11-28_14-11-09.png', '1'),
 ('image_5fd8c0fba1a34', '1', 'Cuplikan_layar_dari_2020-11-28_17-43-471.png', '1'),
 ('image_5fd8c0fbe0dc0', '1', 'Cuplikan_layar_dari_2020-12-01_17-51-24.png', '1'),
-('image_5fd8c0fbee916', '1', 'Cuplikan_layar_dari_2020-12-01_17-51-25.png', '1');
+('image_5fd8c0fbee916', '1', 'Cuplikan_layar_dari_2020-12-01_17-51-25.png', '1'),
+('image_5ff3216e9ec55', '1', 'Cuplikan_layar_dari_2020-11-19_21_26_302.png', 'review_5ff3216e5c9c7'),
+('image_5ff3f1c755589', '6', 'Cuplikan_layar_dari_2020-12-01_17-51-242.png', 'review_5ff3f1c73ae77');
 
 -- --------------------------------------------------------
 
@@ -121,7 +132,9 @@ INSERT INTO `rating` (`id_rating`, `id_user`, `id_tempat_ngopi`, `id_review`, `r
 (2, 4, '1', NULL, 5),
 (3, 4, '2', NULL, 5),
 (4, 4, '3', NULL, 2),
-(5, 4, '4', NULL, 1);
+(5, 4, '4', NULL, 1),
+(6, 1, '1', 'review_5ff3216e5c9c7', 5),
+(7, 4, '6', 'review_5ff3f1c73ae77', 4);
 
 -- --------------------------------------------------------
 
@@ -144,7 +157,9 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`id_review`, `id_user`, `id_tempat_ngopi`, `tgl_pergi`, `judul`, `review_pengguna`, `harga`) VALUES
-('1', 1, '1', '2020-12-15', 'enak', 'minumannya enak', '<50000');
+('1', 1, '1', '2020-12-15', 'enak', 'minumannya enak', '<50000'),
+('review_5ff3216e5c9c7', 1, '1', '2021-01-06', 'a', 'a', '<50000'),
+('review_5ff3f1c73ae77', 4, '6', '2021-01-06', 'bagus', 'bagus', '<50000');
 
 -- --------------------------------------------------------
 
@@ -172,7 +187,8 @@ INSERT INTO `tempat_ngopi` (`id_tempat_ngopi`, `nama`, `alamat`, `foto`) VALUES
 ('6', 'Kopi Toko Djawa', 'Bandung', 'about-img.jpg'),
 ('7', 'Two Cents', 'Bandung', 'about-img.jpg'),
 ('8', 'Lalune Coffee & Luncheonette', 'Bandung', 'about-img.jpg'),
-('9', 'LoKa Si Coffee & Space', 'Bandung', 'about-img.jpg');
+('9', 'LoKa Si Coffee & Space', 'Bandung', 'about-img.jpg'),
+('tempat5ff41e21f03f0', 'JurnalRisa Coffee', 'Bandung', 'Jurnal_Risa_Coffee.jpeg');
 
 -- --------------------------------------------------------
 
@@ -199,9 +215,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `level`, `nama`, `jenisKelamin`, `pekerjaan`, `tanggalLahir`, `email`, `foto`, `token`) VALUES
-(1, 'bagas', '$2y$10$Rz/Dm3/.UWHH/1FFKt012OSRhKjFiRtHzhITHykIfc6BFbl/05L9e', 'user', 'M. Bagas Setia', 'l', 'mahasiswa', '2020-12-30', 'bagassetia271@gmail.com', 'Cuplikan_layar_dari_2020-11-28_17-43-47.png', '9420f8559652dce0c202749cafa12376'),
+(1, 'bagas', '$2y$10$/bDkEdnpYkjLoV2uQEJm6eNcIVEhoS3mjQzTEcK.RIqrGzECTSlfW', 'user', 'M. Bagas Setia', 'l', 'mahasiswa', '2020-12-30', 'bagassetia271@gmail.com', 'Cuplikan_layar_dari_2020-11-28_17-43-47.png', '50ec92e39bfa5b5182cd7a659abfe33d'),
 (3, 'admin', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'admin', 'admin', 'l', 'mahasiswa', '2020-12-30', 'setiapermanabagas@gmail.com', NULL, NULL),
-(4, 'a', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'a', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, 'rdewi@galva.co.id', NULL, 'ffc2f7d6bd45ce3fa4f1a847b9bace56'),
 (5, 'b', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'c', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'd', '$2y$10$fmpA6zc6yJ.H09l89H063.UlKNtX5U0jZChlltzghGtpVIZLJPGWm', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -277,13 +293,13 @@ ALTER TABLE `fasilitas`
 -- AUTO_INCREMENT untuk tabel `fasilitasTempat`
 --
 ALTER TABLE `fasilitasTempat`
-  MODIFY `idFasilitasTempat` bigint(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idFasilitasTempat` bigint(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id_rating` bigint(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_rating` bigint(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
